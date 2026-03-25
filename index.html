@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Intersectional Uprising — a grassroots activist collective united in the fight for women's rights, everywhere, for everyone. Nationwide solidarity marches twice a year across the UK.">
+<title>Intersectional Uprising</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #5C2D91;
+    --purple-dark: #3A1A5C;
+    --purple-light: #7B4BB5;
+    --green: #2D6B4A;
+    --green-light: #3D8A60;
+    --cream: #F9F5EF;
+    --white: #FFFFFF;
+    --text: #1A1020;
+    --text-mid: #4A3860;
+    --border: #DDD3EE;
+  }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--purple-dark);
+    z-index: 100;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    color: var(--white);
+    font-size: 1.05rem;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+
+  .nav-logo span {
+    display: block;
+    font-size: 0.65rem;
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C4A8E8;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #D4B8F0;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--purple-dark);
+    z-index: 99;
+    padding: 1.5rem 2rem;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    color: #D4B8F0;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 1rem;
+  }
+
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 64px;
+    position: relative;
+    height: 85vh;
+    min-height: 500px;
+    overflow: hidden;
+  }
+
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(58,26,92,0.78) 0%, rgba(45,107,74,0.45) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hero-content h1 {
+    color: var(--white);
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  .hero-content h1 em {
+    font-style: italic;
+    color: #D4B8F0;
+  }
+
+  .hero-content p {
+    color: rgba(255,255,255,0.9);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--purple-dark);
+  }
+
+  .btn-primary:hover { background: #E8D8FF; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255,255,255,0.7);
+  }
+
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── QUICK LINKS ── */
+  .quick-links {
+    background: var(--purple);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .quick-link {
+    color: var(--white);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.8rem;
+    border-right: 1px solid rgba(255,255,255,0.25);
+    transition: background 0.2s;
+  }
+
+  .quick-link:last-child { border-right: none; }
+  .quick-link:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.2;
+    color: var(--purple-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    color: var(--purple-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  p { margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── ABOUT ── */
+  .about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-image {
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(58,26,92,0.15);
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-text .values {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .value-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+  }
+
+  .value-tag::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--purple-light);
+    flex-shrink: 0;
+  }
+
+  /* ── MARCH ── */
+  .march { background: var(--white); }
+
+  .march-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .march-card {
+    background: var(--cream);
+    border-top: 3px solid var(--purple);
+    padding: 2rem;
+  }
+
+  .march-card .icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .march-card h3 { font-size: 1.05rem; }
+
+  .march-card p {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* ── SUPPORT ── */
+  .support { background: var(--purple-dark); color: var(--white); }
+
+  .support h2 { color: var(--white); }
+  .support .section-label { color: #C4A8E8; }
+
+  .support-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .support-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 2rem;
+    border-radius: 2px;
+  }
+
+  .support-card h3 {
+    color: #D4B8F0;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .support-card p {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  .support-card .btn-green {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.65rem 1.5rem;
+    background: var(--green-light);
+    color: var(--white);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .support-card .btn-green:hover { background: #2D6B4A; }
+
+  .inkind-list {
+    list-style: none;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .inkind-list li {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .inkind-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #C4A8E8;
+  }
+
+  /* ── TEAM ── */
+  .team { background: var(--cream); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .team-card {
+    background: var(--white);
+    border-bottom: 3px solid var(--purple-light);
+    padding: 1.5rem;
+  }
+
+  .team-card .name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--purple-dark);
+    margin-bottom: 0.25rem;
+  }
+
+  .team-card .role {
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--green);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .team-card .bio {
+    font-family: Arial, sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info h3 { margin-top: 1.5rem; }
+
+  .contact-info p {
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-mid);
+  }
+
+  .contact-info a {
+    color: var(--purple);
+    text-decoration: none;
+  }
+
+  .contact-info a:hover { text-decoration: underline; }
+
+  .socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .social-link {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--purple-dark);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .social-link:hover { background: var(--purple); color: var(--white); }
+
+  .chapters-note {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: var(--cream);
+    border-left: 3px solid var(--purple-light);
+    font-family: Arial, sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  label {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 0.35rem;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, textarea:focus { border-color: var(--purple-light); }
+
+  textarea { height: 130px; resize: vertical; }
+
+  .btn-submit {
+    background: var(--purple);
+    color: var(--white);
+    border: none;
+    padding: 0.9rem 2rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+
+  .btn-submit:hover { background: var(--purple-dark); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--purple-dark);
+    color: rgba(255,255,255,0.6);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.8;
+  }
+
+  footer a { color: #C4A8E8; text-decoration: none; }
+  footer a:hover { color: var(--white); }
+
+  footer .footer-tagline {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .about-grid,
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    .about-image img { height: 260px; }
+
+    .form-row { grid-template-columns: 1fr; }
+
+    section { padding: 3.5rem 1.25rem; }
+
+    .quick-link { padding: 0.6rem 1rem; font-size: 0.72rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .btn { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    Intersectional Uprising
+    <span>If it's not intersectional, it's not feminism</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#march">March</a></li>
+    <li><a href="#support">Support Us</a></li>
+    <li><a href="#team">Our Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#march" onclick="closeMenu()">March</a>
+  <a href="#support" onclick="closeMenu()">Support Us</a>
+  <a href="#team" onclick="closeMenu()">Our Team</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="hero.jpg" alt="A public square at golden hour, ready for gathering">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1><em>If it's not intersectional,</em><br>it's not feminism.</h1>
+      <p>A grassroots activist collective united in the fight for women's rights — everywhere, for everyone. Nationwide solidarity marches, twice a year, across the UK.</p>
+      <div class="hero-buttons">
+        <a href="#march" class="btn btn-primary">Join the March</a>
+        <a href="#support" class="btn btn-outline">Support Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK LINKS -->
+<div class="quick-links">
+  <a href="#about" class="quick-link">Our Mission</a>
+  <a href="#march" class="quick-link">Solidarity Marches</a>
+  <a href="#support" class="quick-link">Donate</a>
+  <a href="#team" class="quick-link">Our Team</a>
+  <a href="#contact" class="quick-link">Get in Touch</a>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="hero.jpg" alt="Intersectional Uprising">
+      </div>
+      <div class="about-text">
+        <p class="section-label">Who We Are</p>
+        <h2>Liberation is collective.</h2>
+        <p>Intersectional Uprising is a grassroots activist collective united in the fight for women's rights. We operate through demonstration, education, and community engagement to advance equity and justice.</p>
+        <p>We centre marginalised communities: women in Afghanistan, Iran, Palestine, and the United States. Trans women, women of colour, disabled women, migrants, and working-class women. We recognise that overlapping forms of oppression cannot be addressed one at a time.</p>
+        <p>We will not rest until equity, dignity, justice, and freedom are realities for all women.</p>
+        <div class="values">
+          <span class="value-tag">Intersectionality — feminism must be intersectional to be meaningful</span>
+          <span class="value-tag">Inclusive spaces — all genders welcome, united by shared commitment</span>
+          <span class="value-tag">Safety and accountability — zero tolerance for discrimination or hate</span>
+          <span class="value-tag">Collective action — because liberation is never individual</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARCH -->
+<section class="march" id="march">
+  <div class="container">
+    <p class="section-label">Solidarity Marches</p>
+    <h2>We march. Twice a year. Nationwide.</h2>
+    <p style="max-width: 680px; font-family: Arial, sans-serif; color: var(--text-mid);">Our twice-yearly nationwide solidarity marches bring together activists from across the UK to amplify silenced voices and demonstrate collective power. Follow our social channels for upcoming march dates and locations.</p>
+    <div class="march-grid">
+      <div class="march-card">
+        <div class="icon">&#9992;</div>
+        <h3>Nationwide reach</h3>
+        <p>We coordinate marches across the UK with city leads in Manchester, Leeds, Birmingham, London, Brighton, Cardiff, Cambridge, and more.</p>
+      </div>
+      <div class="march-card">
+        <div class="icon">&#128170;</div>
+        <h3>All are welcome</h3>
+        <p>Female, male, non-binary, and trans individuals — all united by a shared commitment to justice and the belief that liberation is collective.</p>
+      </div>
+      <div class="march-card">
+        <div class="icon">&#128227;</div>
+        <h3>Organised and safe</h3>
+        <p>Every march is planned with care. We maintain zero tolerance for discrimination, harassment, or hate in all our spaces.</p>
+      </div>
+      <div class="march-card">
+        <div class="icon">&#127759;</div>
+        <h3>Global solidarity</h3>
+        <p>We march in solidarity with women in Afghanistan, Iran, Palestine, the United States, and everywhere that women's rights are under threat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support" id="support">
+  <div class="container">
+    <p class="section-label">Support Us</p>
+    <h2>Every contribution matters.</h2>
+    <p style="max-width: 680px; font-family: Arial, sans-serif; color: rgba(255,255,255,0.75); margin-bottom: 0;">We are an entirely volunteer-run organisation. Every donation, big or small, helps us keep marching, keep organising, and keep fighting.</p>
+    <div class="support-grid">
+      <div class="support-card">
+        <h3>Donate</h3>
+        <p>Financial contributions go directly to march logistics, materials, and outreach. We use JustGiving to keep things transparent.</p>
+        <a href="https://www.justgiving.com" class="btn-green" target="_blank">Donate via JustGiving</a>
+      </div>
+      <div class="support-card">
+        <h3>In-kind donations</h3>
+        <p>We also welcome physical contributions to help our marches run safely and effectively.</p>
+        <ul class="inkind-list">
+          <li>High-visibility vests</li>
+          <li>Bottled water</li>
+          <li>Megaphones and PA systems</li>
+          <li>First aid kits</li>
+          <li>Printed materials</li>
+        </ul>
+      </div>
+      <div class="support-card">
+        <h3>Take action</h3>
+        <p>You can support our campaigns by signing petitions, sharing our content, and using the hashtag <strong>#SomeoneIKnew</strong> on social media to amplify our reach.</p>
+      </div>
+      <div class="support-card">
+        <h3>Join us</h3>
+        <p>We are entirely volunteer-led. If you want to get involved as a city lead, organiser, or supporter, get in touch via our contact page.</p>
+        <a href="#contact" class="btn-green">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="container">
+    <p class="section-label">Our People</p>
+    <h2>Built by volunteers, for everyone.</h2>
+    <p style="max-width: 680px; font-family: Arial, sans-serif; color: var(--text-mid);">Intersectional Uprising is run entirely by a team of committed volunteers spread across the UK — co-founders, city leads, legal advisors, wellbeing officers, and more.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="name">Alix Valentine-Colquhoun</div>
+        <div class="role">Co-founder</div>
+        <div class="bio">The organisational powerhouse behind Intersectional Uprising. Committed to feminist values and building inclusive movements.</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Amy Macleod</div>
+        <div class="role">Co-founder</div>
+        <div class="bio">Woman in STEM who brings energy, creativity, and a love of problem-solving to activism. Believes in fighting for change with joy.</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Adele</div>
+        <div class="role">Technology &amp; HR / Manchester City Lead</div>
+        <div class="bio">Woman in STEM with ADHD. Believes digital tools are powerful ways to build movements.</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Vix (Vicky)</div>
+        <div class="role">PR Officer / Leeds City Lead</div>
+        <div class="bio">Post-op trans woman passionate about bodily autonomy and women's equality. Years of experience in the LGBTQ+ charity sector.</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Sasha</div>
+        <div class="role">Wellbeing Officer / North Wales City Lead</div>
+        <div class="bio">Mental health advocate and survivor who channels an insane sense of social justice into activism work.</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Lydia</div>
+        <div class="role">Diversity Outreach / Brighton City Lead</div>
+        <div class="bio">Disabled woman, survivor, and disability advocate. Studies criminology with psychology.</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Stacey</div>
+        <div class="role">Unions &amp; Charities Liaison / Cambridge</div>
+        <div class="bio">Trade unionist and lifelong advocate for workers' rights. Believes in the power of collective action and intersectional solidarity.</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Racy</div>
+        <div class="role">Legal Advisor &amp; Editor / Middlesbrough Lead</div>
+        <div class="bio">Legal advisor keeping the organisation grounded and accountable.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-label">Get in Touch</p>
+        <h2>We'd love to hear from you.</h2>
+        <p style="font-family: Arial, sans-serif; color: var(--text-mid);">Whether you want to get involved, donate in kind, join as a city lead, or just ask a question, drop us a message.</p>
+        <h3>Email</h3>
+        <p><a href="mailto:hello@intersectionaluprising.co.uk">hello@intersectionaluprising.co.uk</a></p>
+        <h3>Follow us</h3>
+        <div class="socials">
+          <a href="https://www.instagram.com/intersectionaluprising" class="social-link" target="_blank">Instagram</a>
+          <a href="https://www.facebook.com/groups/1073715297406848" class="social-link" target="_blank">Facebook</a>
+          <a href="https://www.tiktok.com/@intersectionaluprising" class="social-link" target="_blank">TikTok</a>
+        </div>
+        <div class="chapters-note">
+          We have active chapters in Manchester, Leeds, Birmingham, London, Brighton, Cardiff, Cambridge, Middlesbrough, Norwich, Kings Lynn, Bournemouth, Aberystwyth, and more. Search your city on Instagram to find your local group.
+        </div>
+      </div>
+      <div class="contact-form">
+        <p class="section-label">Send a Message</p>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div>
+              <label for="fname">First name</label>
+              <input type="text" id="fname" name="fname" required>
+            </div>
+            <div>
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" name="lname" required>
+            </div>
+          </div>
+          <div>
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="subject">What is this about?</label>
+            <select id="subject" name="subject">
+              <option value="">Please select...</option>
+              <option>Joining the march</option>
+              <option>Volunteering</option>
+              <option>In-kind donation</option>
+              <option>Media enquiry</option>
+              <option>General question</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-tagline">"If it's not intersectional, it's not feminism."</p>
+  <p>
+    <a href="mailto:hello@intersectionaluprising.co.uk">hello@intersectionaluprising.co.uk</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.instagram.com/intersectionaluprising" target="_blank">Instagram</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.tiktok.com/@intersectionaluprising" target="_blank">TikTok</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.facebook.com/groups/1073715297406848" target="_blank">Facebook</a>
+  </p>
+  <p style="margin-top: 0.75rem;">Copyright &copy; 2026 Intersectional Uprising. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('Thanks for your message. We\'ll be in touch soon.');
+    e.target.reset();
+  }
+  // Close mobile menu on outside click
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
