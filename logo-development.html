@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intersectional Uprising — Logo Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Bebas+Neue&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --violet:    #2D1B4E;
+    --green:     #1A3D2B;
+    --pink:      #E8175D;
+    --parchment: #F5F0E0;
+    --ochre:     #C9A84C;
+  }
+  body { background: #111; font-family: 'DM Sans', sans-serif; color: #aaa; padding: 4rem 2rem; }
+
+  header { margin-bottom: 4rem; border-bottom: 1px solid #222; padding-bottom: 2rem; }
+  header p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: #555; margin-bottom: 0.4rem; }
+  header h1 { font-size: 1rem; font-weight: 500; color: #eee; }
+
+  .concept-block { margin-bottom: 6rem; }
+  .concept-tag { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: #555; margin-bottom: 2rem; }
+
+  /* Three-panel layout: white / violet / small scales */
+  .panels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 2rem; }
+
+  .p-white  { background: white; padding: 3.5rem; display:flex; align-items:center; justify-content:center; }
+  .p-violet { background: var(--violet); padding: 3.5rem; display:flex; align-items:center; justify-content:center; }
+  .p-scales { background: #f9f9f9; padding: 2rem; display:flex; flex-direction:column; justify-content:space-between; gap:1.5rem; }
+
+  .p-white svg, .p-violet svg { width: 160px; height: 160px; }
+  .p-violet svg { filter: invert(1); }
+
+  .scale-row { display:flex; align-items:center; gap:1.5rem; }
+  .scale-row svg { flex-shrink:0; }
+  .scale-row span { font-size:0.58rem; color:#aaa; letter-spacing:0.1em; }
+
+  /* Lockup panel */
+  .lockup-row { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:2rem; }
+  .lockup-cell { background: white; padding:3rem; display:flex; align-items:center; justify-content:center; }
+  .lockup-cell.dark { background: var(--violet); }
+
+  .lockup { display:flex; align-items:center; gap:1.2rem; }
+  .lockup svg { flex-shrink:0; }
+  .lockup-text { line-height:1.1; }
+  .lockup-text .inter {
+    display:block;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1rem;
+    letter-spacing:0.12em;
+    color: var(--violet);
+  }
+  .lockup-text .uprising {
+    display:block;
+    font-family:'Bebas Neue', sans-serif;
+    font-size:2.4rem;
+    letter-spacing:0.05em;
+    color: var(--violet);
+    line-height:0.9;
+  }
+  .lockup-cell.dark .lockup-text .inter  { color: #C4A8E8; }
+  .lockup-cell.dark .lockup-text .uprising { color: white; }
+  .lockup-cell.dark svg { filter: invert(1); }
+
+  .stacked { flex-direction:column; text-align:center; gap:0.8rem; }
+  .stacked .lockup-text .inter  { text-align:center; }
+  .stacked .lockup-text .uprising { text-align:center; }
+
+  /* Rationale */
+  .rationale { padding: 1.5rem; background: #1a1a1a; border-left: 2px solid #333; }
+  .rationale strong { color: #eee; font-size:0.8rem; display:block; margin-bottom:0.5rem; }
+  .rationale p { font-size:0.82rem; line-height:1.7; color:#777; }
+
+  .highlight { border-left-color: var(--pink); }
+  .highlight strong { color: var(--parchment); }
+  .highlight p { color: #999; }
+
+  hr { border:none; border-top:1px solid #1e1e1e; margin: 5rem 0; }
+
+  @media(max-width:800px) {
+    .panels { grid-template-columns:1fr 1fr; }
+    .p-scales { display:none; }
+    .lockup-row { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p>Intersectional Uprising — Logo Development / Selected: 05, 19, 23 + Hybrid / March 2026</p>
+  <h1>Four directions refined — mark + wordmark lockups</h1>
+</header>
+
+
+<!-- ══ 05 — WINGS ONLY ══ -->
+<div class="concept-block">
+<p class="concept-tag">05 — Wings only, no body</p>
+
+<div class="panels">
+  <div class="p-white">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Refined wing spread: clean feather tips, balanced, strong at all sizes -->
+      <path d="M50,82 L12,18 L22,30 L14,8  L30,26 L26,10 L38,32 L38,14 L50,36
+               L62,14 L62,32 L74,10 L70,26 L86,8  L78,30 L88,18 Z"
+            fill="black" stroke="black" stroke-width="1" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="p-violet">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50,82 L12,18 L22,30 L14,8  L30,26 L26,10 L38,32 L38,14 L50,36
+               L62,14 L62,32 L74,10 L70,26 L86,8  L78,30 L88,18 Z"
+            fill="black" stroke="black" stroke-width="1" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="p-scales">
+    <div class="scale-row">
+      <svg width="16" height="16" viewBox="0 0 100 100"><path d="M50,82 L12,18 L22,30 L14,8 L30,26 L26,10 L38,32 L38,14 L50,36 L62,14 L62,32 L74,10 L70,26 L86,8 L78,30 L88,18 Z" fill="black"/></svg>
+      <span>16px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="32" height="32" viewBox="0 0 100 100"><path d="M50,82 L12,18 L22,30 L14,8 L30,26 L26,10 L38,32 L38,14 L50,36 L62,14 L62,32 L74,10 L70,26 L86,8 L78,30 L88,18 Z" fill="black"/></svg>
+      <span>32px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="64" height="64" viewBox="0 0 100 100"><path d="M50,82 L12,18 L22,30 L14,8 L30,26 L26,10 L38,32 L38,14 L50,36 L62,14 L62,32 L74,10 L70,26 L86,8 L78,30 L88,18 Z" fill="black"/></svg>
+      <span>64px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="120" height="120" viewBox="0 0 100 100"><path d="M50,82 L12,18 L22,30 L14,8 L30,26 L26,10 L38,32 L38,14 L50,36 L62,14 L62,32 L74,10 L70,26 L86,8 L78,30 L88,18 Z" fill="black"/></svg>
+      <span>120px</span>
+    </div>
+  </div>
+</div>
+
+<div class="lockup-row">
+  <div class="lockup-cell">
+    <div class="lockup">
+      <svg width="48" height="48" viewBox="0 0 100 100"><path d="M50,82 L12,18 L22,30 L14,8 L30,26 L26,10 L38,32 L38,14 L50,36 L62,14 L62,32 L74,10 L70,26 L86,8 L78,30 L88,18 Z" fill="black"/></svg>
+      <div class="lockup-text">
+        <span class="inter">Intersectional</span>
+        <span class="uprising">UPRISING</span>
+      </div>
+    </div>
+  </div>
+  <div class="lockup-cell dark">
+    <div class="lockup stacked">
+      <svg width="52" height="52" viewBox="0 0 100 100"><path d="M50,82 L12,18 L22,30 L14,8 L30,26 L26,10 L38,32 L38,14 L50,36 L62,14 L62,32 L74,10 L70,26 L86,8 L78,30 L88,18 Z" fill="black"/></svg>
+      <div class="lockup-text">
+        <span class="inter">Intersectional</span>
+        <span class="uprising">UPRISING</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rationale">
+  <strong>05 — Wings only</strong>
+  <p>The bird without the body. What is universally read as phoenix is the wing span — removing the body makes it more symbol than illustration. Scales well. Works embroidered, stamped, printed. The feather tips give it detail at large sizes that simplifies cleanly at small.</p>
+</div>
+</div>
+
+<hr>
+
+<!-- ══ 19 — Y JUNCTION ══ -->
+<div class="concept-block">
+<p class="concept-tag">19 — Y-form / convergence junction</p>
+
+<div class="panels">
+  <div class="p-white">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18,88 L50,52 L82,88" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M50,52 L50,8"         stroke="black" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="p-violet">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18,88 L50,52 L82,88" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M50,52 L50,8"         stroke="black" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="p-scales">
+    <div class="scale-row">
+      <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M18,88 L50,52 L82,88" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,52 L50,8" stroke="black" stroke-width="8" stroke-linecap="round"/></svg>
+      <span>16px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="32" height="32" viewBox="0 0 100 100" fill="none"><path d="M18,88 L50,52 L82,88" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,52 L50,8" stroke="black" stroke-width="8" stroke-linecap="round"/></svg>
+      <span>32px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="64" height="64" viewBox="0 0 100 100" fill="none"><path d="M18,88 L50,52 L82,88" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,52 L50,8" stroke="black" stroke-width="8" stroke-linecap="round"/></svg>
+      <span>64px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="120" height="120" viewBox="0 0 100 100" fill="none"><path d="M18,88 L50,52 L82,88" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,52 L50,8" stroke="black" stroke-width="8" stroke-linecap="round"/></svg>
+      <span>120px</span>
+    </div>
+  </div>
+</div>
+
+<div class="lockup-row">
+  <div class="lockup-cell">
+    <div class="lockup">
+      <svg width="44" height="44" viewBox="0 0 100 100" fill="none"><path d="M18,88 L50,52 L82,88" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,52 L50,8" stroke="black" stroke-width="8" stroke-linecap="round"/></svg>
+      <div class="lockup-text">
+        <span class="inter">Intersectional</span>
+        <span class="uprising">UPRISING</span>
+      </div>
+    </div>
+  </div>
+  <div class="lockup-cell dark">
+    <div class="lockup stacked">
+      <svg width="48" height="48" viewBox="0 0 100 100" fill="none"><path d="M18,88 L50,52 L82,88" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,52 L50,8" stroke="black" stroke-width="8" stroke-linecap="round"/></svg>
+      <div class="lockup-text">
+        <span class="inter">Intersectional</span>
+        <span class="uprising">UPRISING</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rationale">
+  <strong>19 — Y-form / junction</strong>
+  <p>Three paths become one, and that one rises. The convergence junction is the most literal rendering of intersectionality as a mark. Structurally it also reads as a person with arms raised — the uprising posture. Extremely versatile at all sizes. Arguably the most durable of the four.</p>
+</div>
+</div>
+
+<hr>
+
+<!-- ══ 23 — FLAME IRIS ══ -->
+<div class="concept-block">
+<p class="concept-tag">23 — Flame iris / eye</p>
+
+<div class="panels">
+  <div class="p-white">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer ring -->
+      <circle cx="50" cy="55" r="36" fill="black"/>
+      <!-- Middle ring cut -->
+      <circle cx="50" cy="55" r="26" fill="white"/>
+      <!-- Inner flame -->
+      <path d="M50,72 C38,72 28,63 28,52 C28,40 38,32 50,20 C62,32 72,40 72,52 C72,63 62,72 50,72 Z" fill="black"/>
+      <!-- Core cut -->
+      <circle cx="50" cy="50" r="10" fill="white"/>
+      <!-- Tip point -->
+      <circle cx="50" cy="50" r="4" fill="black"/>
+    </svg>
+  </div>
+  <div class="p-violet">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="55" r="36" fill="black"/>
+      <circle cx="50" cy="55" r="26" fill="white"/>
+      <path d="M50,72 C38,72 28,63 28,52 C28,40 38,32 50,20 C62,32 72,40 72,52 C72,63 62,72 50,72 Z" fill="black"/>
+      <circle cx="50" cy="50" r="10" fill="white"/>
+      <circle cx="50" cy="50" r="4" fill="black"/>
+    </svg>
+  </div>
+  <div class="p-scales">
+    <div class="scale-row">
+      <svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="55" r="36" fill="black"/><circle cx="50" cy="55" r="26" fill="white"/><path d="M50,72 C38,72 28,63 28,52 C28,40 38,32 50,20 C62,32 72,40 72,52 C72,63 62,72 50,72 Z" fill="black"/><circle cx="50" cy="50" r="10" fill="white"/><circle cx="50" cy="50" r="4" fill="black"/></svg>
+      <span>16px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="32" height="32" viewBox="0 0 100 100"><circle cx="50" cy="55" r="36" fill="black"/><circle cx="50" cy="55" r="26" fill="white"/><path d="M50,72 C38,72 28,63 28,52 C28,40 38,32 50,20 C62,32 72,40 72,52 C72,63 62,72 50,72 Z" fill="black"/><circle cx="50" cy="50" r="10" fill="white"/><circle cx="50" cy="50" r="4" fill="black"/></svg>
+      <span>32px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="64" height="64" viewBox="0 0 100 100"><circle cx="50" cy="55" r="36" fill="black"/><circle cx="50" cy="55" r="26" fill="white"/><path d="M50,72 C38,72 28,63 28,52 C28,40 38,32 50,20 C62,32 72,40 72,52 C72,63 62,72 50,72 Z" fill="black"/><circle cx="50" cy="50" r="10" fill="white"/><circle cx="50" cy="50" r="4" fill="black"/></svg>
+      <span>64px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="120" height="120" viewBox="0 0 100 100"><circle cx="50" cy="55" r="36" fill="black"/><circle cx="50" cy="55" r="26" fill="white"/><path d="M50,72 C38,72 28,63 28,52 C28,40 38,32 50,20 C62,32 72,40 72,52 C72,63 62,72 50,72 Z" fill="black"/><circle cx="50" cy="50" r="10" fill="white"/><circle cx="50" cy="50" r="4" fill="black"/></svg>
+      <span>120px</span>
+    </div>
+  </div>
+</div>
+
+<div class="lockup-row">
+  <div class="lockup-cell">
+    <div class="lockup">
+      <svg width="48" height="48" viewBox="0 0 100 100"><circle cx="50" cy="55" r="36" fill="black"/><circle cx="50" cy="55" r="26" fill="white"/><path d="M50,72 C38,72 28,63 28,52 C28,40 38,32 50,20 C62,32 72,40 72,52 C72,63 62,72 50,72 Z" fill="black"/><circle cx="50" cy="50" r="10" fill="white"/><circle cx="50" cy="50" r="4" fill="black"/></svg>
+      <div class="lockup-text">
+        <span class="inter">Intersectional</span>
+        <span class="uprising">UPRISING</span>
+      </div>
+    </div>
+  </div>
+  <div class="lockup-cell dark">
+    <div class="lockup stacked">
+      <svg width="52" height="52" viewBox="0 0 100 100"><circle cx="50" cy="55" r="36" fill="black"/><circle cx="50" cy="55" r="26" fill="white"/><path d="M50,72 C38,72 28,63 28,52 C28,40 38,32 50,20 C62,32 72,40 72,52 C72,63 62,72 50,72 Z" fill="black"/><circle cx="50" cy="50" r="10" fill="white"/><circle cx="50" cy="50" r="4" fill="black"/></svg>
+      <div class="lockup-text">
+        <span class="inter">Intersectional</span>
+        <span class="uprising">UPRISING</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rationale">
+  <strong>23 — Flame iris</strong>
+  <p>Reads simultaneously as an eye (witness, justice, vigilance) and a flame (the fire the phoenix rises from). The ringed structure gives it badge quality — works as a seal or stamp. The most contained of the four. Loses the most detail at very small sizes due to the ring structure.</p>
+</div>
+</div>
+
+<hr>
+
+<!-- ══ HYBRID — 05 built from 19 ══ -->
+<div class="concept-block">
+<p class="concept-tag">Hybrid — Wings built from converging strands</p>
+
+<div class="panels">
+  <div class="p-white">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left wing as converging strands -->
+      <path d="M50,78 C42,62 18,45 8,10"  stroke="black" stroke-width="7" stroke-linecap="round"/>
+      <path d="M50,78 C44,60 24,44 18,12" stroke="black" stroke-width="5" stroke-linecap="round"/>
+      <path d="M50,78 C47,58 34,42 32,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Right wing as converging strands -->
+      <path d="M50,78 C58,62 82,45 92,10"  stroke="black" stroke-width="7" stroke-linecap="round"/>
+      <path d="M50,78 C56,60 76,44 82,12"  stroke="black" stroke-width="5" stroke-linecap="round"/>
+      <path d="M50,78 C53,58 66,42 68,12"  stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Centre rising strand -->
+      <path d="M50,78 L50,8" stroke="black" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="p-violet">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50,78 C42,62 18,45 8,10"  stroke="black" stroke-width="7" stroke-linecap="round"/>
+      <path d="M50,78 C44,60 24,44 18,12" stroke="black" stroke-width="5" stroke-linecap="round"/>
+      <path d="M50,78 C47,58 34,42 32,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M50,78 C58,62 82,45 92,10"  stroke="black" stroke-width="7" stroke-linecap="round"/>
+      <path d="M50,78 C56,60 76,44 82,12"  stroke="black" stroke-width="5" stroke-linecap="round"/>
+      <path d="M50,78 C53,58 66,42 68,12"  stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M50,78 L50,8" stroke="black" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="p-scales">
+    <div class="scale-row">
+      <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><path d="M50,78 C42,62 18,45 8,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C44,60 24,44 18,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C47,58 34,42 32,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 C58,62 82,45 92,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C56,60 76,44 82,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C53,58 66,42 68,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 L50,8" stroke="black" stroke-width="4" stroke-linecap="round"/></svg>
+      <span>16px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="32" height="32" viewBox="0 0 100 100" fill="none"><path d="M50,78 C42,62 18,45 8,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C44,60 24,44 18,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C47,58 34,42 32,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 C58,62 82,45 92,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C56,60 76,44 82,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C53,58 66,42 68,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 L50,8" stroke="black" stroke-width="4" stroke-linecap="round"/></svg>
+      <span>32px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="64" height="64" viewBox="0 0 100 100" fill="none"><path d="M50,78 C42,62 18,45 8,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C44,60 24,44 18,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C47,58 34,42 32,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 C58,62 82,45 92,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C56,60 76,44 82,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C53,58 66,42 68,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 L50,8" stroke="black" stroke-width="4" stroke-linecap="round"/></svg>
+      <span>64px</span>
+    </div>
+    <div class="scale-row">
+      <svg width="120" height="120" viewBox="0 0 100 100" fill="none"><path d="M50,78 C42,62 18,45 8,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C44,60 24,44 18,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C47,58 34,42 32,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 C58,62 82,45 92,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C56,60 76,44 82,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C53,58 66,42 68,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 L50,8" stroke="black" stroke-width="4" stroke-linecap="round"/></svg>
+      <span>120px</span>
+    </div>
+  </div>
+</div>
+
+<div class="lockup-row">
+  <div class="lockup-cell">
+    <div class="lockup">
+      <svg width="48" height="48" viewBox="0 0 100 100" fill="none"><path d="M50,78 C42,62 18,45 8,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C44,60 24,44 18,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C47,58 34,42 32,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 C58,62 82,45 92,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C56,60 76,44 82,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C53,58 66,42 68,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 L50,8" stroke="black" stroke-width="4" stroke-linecap="round"/></svg>
+      <div class="lockup-text">
+        <span class="inter">Intersectional</span>
+        <span class="uprising">UPRISING</span>
+      </div>
+    </div>
+  </div>
+  <div class="lockup-cell dark">
+    <div class="lockup stacked">
+      <svg width="52" height="52" viewBox="0 0 100 100" fill="none"><path d="M50,78 C42,62 18,45 8,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C44,60 24,44 18,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C47,58 34,42 32,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 C58,62 82,45 92,10" stroke="black" stroke-width="7" stroke-linecap="round"/><path d="M50,78 C56,60 76,44 82,12" stroke="black" stroke-width="5" stroke-linecap="round"/><path d="M50,78 C53,58 66,42 68,12" stroke="black" stroke-width="3.5" stroke-linecap="round"/><path d="M50,78 L50,8" stroke="black" stroke-width="4" stroke-linecap="round"/></svg>
+      <div class="lockup-text">
+        <span class="inter">Intersectional</span>
+        <span class="uprising">UPRISING</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rationale highlight">
+  <strong>Hybrid — the brief in one mark</strong>
+  <p>Wings made of strands, all rising from a single point. The phoenix form is implied rather than illustrated. Multiple lines, different weights, converging and ascending together — that is intersectionality, that is uprising, that is the phoenix. Carries the full brief without depicting any of it literally. The varied stroke weights mean it reads at all sizes: at 16px it's a bold fan shape; at large scale the strand structure is visible. This is the direction to develop further.</p>
+</div>
+</div>
+
+</body>
+</html>

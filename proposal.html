@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="IU-Mock%20Logo.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Proposal for Intersectional Uprising — Victoria Denham</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --violet:    #2D1B4E;
+    --green:     #1A3D2B;
+    --pink:      #E8175D;
+    --parchment: #F5F0E0;
+    --ochre:     #C9A84C;
+    --black:     #090908;
+    --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { pointer-events: none; user-select: none; -webkit-user-drag: none; }
+
+  /* ── GRAIN ── */
+  .grain { position: relative; overflow: hidden; }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--grain);
+    opacity: 0.13;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .grain > * { position: relative; z-index: 2; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--black);
+    border-bottom: 1px solid #1a1a1a;
+    padding: 0 4rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+
+  .nav-brand img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    filter: invert(1);
+    opacity: 0.9;
+  }
+
+  .nav-brand-text { display: flex; flex-direction: column; line-height: 1; }
+
+  .nav-brand-text .top {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: rgba(245,240,224,0.6);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-brand-text .bottom {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    color: var(--parchment);
+    letter-spacing: 0.08em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,224,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--pink); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 10rem 6rem 7rem;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: saturate(0.5) brightness(0.5);
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(45,27,78,0.85) 0%, rgba(26,61,43,0.55) 55%, rgba(9,9,8,0.9) 100%);
+  }
+
+  .hero > *:not(.hero-bg) { position: relative; z-index: 1; }
+
+  .hero-pre {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-pre::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--ochre);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(3rem, 7vw, 6rem);
+    text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    line-height: 1.05;
+    color: var(--parchment);
+    max-width: 900px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-standfirst {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: rgba(245,240,224,0.85);
+    max-width: 620px;
+    margin-bottom: 4rem;
+    text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+  }
+
+  .hero-meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,224,0.55);
+    line-height: 2.2;
+  }
+
+  /* ── CONTENTS ── */
+  .contents {
+    background: var(--violet);
+    padding: 5rem 6rem;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contents-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,240,224,0.75);
+    padding-top: 1.4rem;
+  }
+
+  .contents-list {
+    list-style: none;
+  }
+
+  .contents-list li {
+    border-bottom: 1px solid rgba(245,240,224,0.1);
+  }
+
+  .contents-list a {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr auto;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding: 1.4rem 0;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .contents-list a:hover .c-title { color: var(--pink); }
+
+  .c-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    color: var(--pink);
+    opacity: 0.6;
+  }
+
+  .c-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--parchment);
+    transition: color 0.2s;
+  }
+
+  .c-desc {
+    font-size: 0.85rem;
+    color: rgba(245,240,224,0.82);
+    text-align: right;
+    max-width: 260px;
+    line-height: 1.5;
+  }
+
+  /* ── SHARED SECTION STYLES ── */
+  section { scroll-margin-top: 52px; }
+
+  .sec-inner { padding: 6rem; }
+
+  .sec-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .n { color: var(--pink); }
+
+  .sec-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+    line-height: 1.85;
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+
+  /* ── 01 SITUATION — parchment ── */
+  #situation { background: var(--parchment); }
+  #situation .sec-label { color: rgba(45,27,78,0.45); }
+  #situation .sec-h2 { color: var(--violet); }
+  #situation .lead { color: #3a2460; }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .problem-card {
+    padding: 2.5rem;
+    background: #fff;
+    border-top: 3px solid rgba(45,27,78,0.1);
+  }
+
+  .problem-card.dark {
+    background: var(--violet);
+    border-top-color: var(--pink);
+  }
+
+  .p-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 0.85rem;
+  }
+
+  .problem-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.65rem;
+  }
+
+  .problem-card:not(.dark) h3 { color: var(--violet); }
+  .problem-card.dark h3 { color: var(--parchment); }
+
+  .problem-card p { font-size: 0.85rem; line-height: 1.75; }
+  .problem-card:not(.dark) p { color: #3d2866; }
+  .problem-card.dark p { color: rgba(245,240,224,0.82); }
+
+  /* ── 02 THINKING — black ── */
+  #thinking { background: var(--black); }
+  #thinking .sec-label { color: rgba(245,240,224,0.6); }
+  #thinking .sec-h2 { color: var(--parchment); }
+  #thinking .lead { color: rgba(245,240,224,0.6); }
+
+  .thinking-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .thinking-card {
+    padding: 2.5rem;
+    background: #0f0f0f;
+    border-top: 2px solid #1a1a1a;
+  }
+
+  .thinking-card .t-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 1rem;
+  }
+
+  .thinking-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--parchment);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .thinking-card p {
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: rgba(245,240,224,0.55);
+  }
+
+  .palette-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3px;
+    margin-top: 3rem;
+  }
+
+  .swatch {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0.75rem;
+  }
+
+  .swatch .sw-name {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+  }
+
+  .swatch .sw-hex {
+    font-size: 0.65rem;
+    opacity: 0.5;
+  }
+
+  .type-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    margin-top: 3px;
+  }
+
+  .type-card {
+    padding: 2.5rem;
+    background: #0d0d0d;
+  }
+
+  .type-card .type-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,224,0.6);
+    margin-bottom: 1.25rem;
+  }
+
+  .type-card .type-specimen {
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .type-card p {
+    font-size: 0.72rem;
+    line-height: 1.65;
+    color: rgba(245,240,224,0.72);
+  }
+
+  /* ── 03 THE WORK — violet ── */
+  #work { background: var(--violet); }
+  #work .sec-label { color: rgba(245,240,224,0.6); }
+  #work .sec-label .n { color: var(--ochre); }
+  #work .sec-h2 { color: var(--parchment); }
+  #work .lead { color: rgba(245,240,224,0.6); }
+
+  .work-block {
+    margin-bottom: 5rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid rgba(245,240,224,0.08);
+  }
+
+  .work-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .work-block-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 1.25rem;
+  }
+
+  .work-block h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.06em;
+    color: var(--parchment);
+    margin-bottom: 0.75rem;
+  }
+
+  .work-block p {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: rgba(245,240,224,0.6);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Reference image grid */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .ref-img {
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ref-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.7) brightness(0.85);
+    display: block;
+    transition: filter 0.3s;
+  }
+
+  .ref-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(45,27,78,0.25);
+    mix-blend-mode: multiply;
+  }
+
+  /* Mark development row */
+  .mark-concepts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    margin-bottom: 3rem;
+  }
+
+  .mark-concept {
+    background: #f0ece0;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .mark-concept img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    opacity: 0.55;
+    display: block;
+  }
+
+  .mark-concept .concept-label {
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0.75rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(45,27,78,0.4);
+  }
+
+  .mark-display {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+  }
+
+  .mark-bg {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .mark-bg img {
+    width: 60%;
+    max-width: 120px;
+    height: auto;
+    display: block;
+  }
+
+  /* Website link card */
+  .website-link-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(245,240,224,0.1);
+    border-top: 3px solid var(--pink);
+    padding: 3rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .website-link-card:hover { background: rgba(0,0,0,0.45); }
+
+  .website-link-card .wl-left .wl-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.6rem;
+  }
+
+  .website-link-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.06em;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .website-link-card p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(245,240,224,0.6);
+    max-width: 520px;
+    margin: 0;
+  }
+
+  .website-link-card .wl-cta {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    color: var(--pink);
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .website-link-card .wl-cta::after { content: '→'; font-size: 1.2rem; }
+
+  /* Inline Instagram phone */
+  .ig-phone-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .ig-phone {
+    width: 340px;
+    background: #1a1a1a;
+    border-radius: 36px;
+    padding: 12px;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.5);
+  }
+
+  .ig-screen {
+    background: #000;
+    border-radius: 26px;
+    overflow: hidden;
+  }
+
+  .ig-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: #1f1f1f;
+  }
+
+  .ig-tile {
+    aspect-ratio: 4 / 5;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ig-tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--grain);
+    opacity: 0.13;
+    mix-blend-mode: overlay;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .ig-tile .t1 { background: var(--violet); }
+
+  .t1 {
+    background: var(--violet);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  .t1 .mark { width: 28px; height: 28px; margin-bottom: 0.4rem; opacity: 0.6; filter: invert(1); position: relative; inset: auto; }
+  .t1 .headline { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--parchment); line-height: 1.1; }
+  .t1 .sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.55rem; color: var(--ochre); margin-top: 0.3rem; }
+
+  .t2 { background: #222; }
+  .t2 img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.6) brightness(0.8); }
+  .t2::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(45,27,78,0.7) 0%, transparent 50%); z-index: 1; }
+  .t2 .city-label { position: absolute; bottom: 0.5rem; left: 0.5rem; z-index: 3; font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--parchment); }
+
+  .t3 { background: var(--parchment); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.75rem; text-align: center; position: relative; }
+  .t3::before { opacity: 0.12 !important; mix-blend-mode: multiply !important; }
+  .t3 .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.65rem; line-height: 1.5; color: var(--violet); margin-bottom: 0.4rem; }
+  .t3 .attr { font-size: 0.45rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pink); }
+
+  .t4 { background: var(--pink); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.5rem; text-align: center; }
+  .t4 .days { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--parchment); line-height: 1; }
+  .t4 .days-label { font-size: 0.45rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(245,240,224,0.7); margin-bottom: 0.4rem; }
+  .t4 .event { font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; letter-spacing: 0.06em; color: var(--parchment); line-height: 1.2; }
+
+  .t5 { background: #222; }
+  .t5 img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.5) brightness(0.75); }
+  .t5::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,61,43,0.75) 0%, transparent 50%); z-index: 1; }
+  .t5 .city-label { position: absolute; bottom: 0.5rem; left: 0.5rem; z-index: 3; font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--parchment); }
+
+  .t6 { background: var(--green); display: flex; flex-direction: column; justify-content: flex-end; padding: 0.6rem; position: relative; }
+  .t6 .chapter-tag { font-size: 0.42rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ochre); margin-bottom: 0.2rem; }
+  .t6 .chapter-name { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.06em; color: var(--parchment); line-height: 1; }
+  .t6 .chapter-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.5rem; color: rgba(245,240,224,0.55); margin-top: 0.15rem; }
+
+  .t7 { background: var(--black); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.5rem; text-align: center; border: 1px solid rgba(245,240,224,0.06); }
+  .t7 .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--pink); line-height: 1; }
+  .t7 .stat-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.55rem; color: rgba(245,240,224,0.6); line-height: 1.4; margin-top: 0.25rem; }
+
+  .t8 { background: #222; }
+  .t8 img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.5) brightness(0.7); }
+  .t8::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,9,8,0.8) 0%, transparent 50%); z-index: 1; }
+  .t8 .city-label { position: absolute; bottom: 0.5rem; left: 0.5rem; z-index: 3; font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--parchment); }
+
+  .t9 { background: var(--ochre); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.6rem; text-align: center; }
+  .t9 .cta-top { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.6rem; color: var(--black); opacity: 0.7; margin-bottom: 0.2rem; }
+  .t9 .cta-main { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; letter-spacing: 0.04em; color: var(--black); line-height: 1.2; }
+  .t9 .cta-url { font-size: 0.38rem; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(9,9,8,0.55); margin-top: 0.35rem; word-break: break-all; }
+
+  /* Instagram notes layout */
+  .ig-with-notes {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .ig-phone-wrap { grid-column: 1; }
+  .ig-notes-list { grid-column: 2; }
+
+  .ig-notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .ig-note-item {
+    display: grid;
+    grid-template-columns: 1.8rem 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(245,240,224,0.07);
+    align-items: start;
+  }
+
+  .ig-note-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: var(--pink);
+    opacity: 0.7;
+    line-height: 1.2;
+  }
+
+  .ig-note-title {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--parchment);
+    margin-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .ig-note-badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.15em 0.45em;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+
+  .badge-static  { background: rgba(232,23,93,0.18); color: var(--pink); }
+  .badge-carousel { background: rgba(201,168,76,0.18); color: var(--ochre); }
+  .badge-pinned  { background: rgba(26,61,43,0.5); color: #8ecfaa; }
+
+  .ig-note-desc {
+    font-size: 0.7rem;
+    color: rgba(245,240,224,0.75);
+    line-height: 1.5;
+  }
+
+  /* ── 04 ROLLOUT — green ── */
+  #rollout { background: var(--green); }
+  #rollout .sec-label { color: rgba(245,240,224,0.6); }
+  #rollout .sec-label .n { color: var(--ochre); }
+  #rollout .sec-h2 { color: var(--parchment); }
+  #rollout .lead { color: rgba(245,240,224,0.65); }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(0,0,0,0.2);
+    margin-bottom: 4rem;
+  }
+
+  .step {
+    background: var(--green);
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .step:nth-child(odd) { background: rgba(0,0,0,0.15); }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--pink);
+    opacity: 0.4;
+    line-height: 1;
+    text-align: right;
+  }
+
+  .step h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.06em;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: rgba(245,240,224,0.65);
+  }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .tl-item {
+    background: rgba(0,0,0,0.2);
+    padding: 2rem;
+    border-top: 3px solid rgba(245,240,224,0.1);
+  }
+
+  .tl-item.active {
+    background: rgba(232,23,93,0.12);
+    border-top-color: var(--pink);
+  }
+
+  .tl-when {
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.6rem;
+  }
+
+  .tl-item.active .tl-when { color: var(--pink); }
+
+  .tl-item h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-item p {
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: rgba(245,240,224,0.6);
+  }
+
+  /* ── 05 THE OFFER — parchment ── */
+  #offer { background: var(--parchment); }
+  #offer .sec-label { color: rgba(45,27,78,0.35); }
+  #offer .sec-h2 { color: var(--violet); }
+  #offer .lead { color: rgba(45,27,78,0.6); }
+
+  .ai-note {
+    background: var(--violet);
+    padding: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-note::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--grain);
+    opacity: 0.1;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .ai-note p {
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: rgba(245,240,224,0.7);
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ai-note p strong {
+    color: var(--parchment);
+    font-weight: 500;
+  }
+
+  .offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .offer-card {
+    padding: 3rem;
+    background: #fff;
+    border-top: 3px solid rgba(45,27,78,0.12);
+  }
+
+  .offer-card.featured {
+    background: var(--violet);
+    border-top-color: var(--pink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-card.featured::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--grain);
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .offer-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .offer-card:not(.featured) .offer-tag { color: rgba(45,27,78,0.4); }
+  .offer-card.featured .offer-tag { color: var(--ochre); }
+
+  .offer-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .offer-card:not(.featured) h3 { color: var(--violet); }
+  .offer-card.featured h3 { color: var(--parchment); }
+
+  .offer-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--pink);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .offer-price-note {
+    font-size: 0.72rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+  }
+
+  .offer-card:not(.featured) .offer-price-note { color: rgba(45,27,78,0.45); }
+  .offer-card.featured .offer-price-note { color: rgba(245,240,224,0.5); }
+
+  .offer-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .offer-card ul li {
+    font-size: 0.82rem;
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .offer-card:not(.featured) ul li { color: rgba(45,27,78,0.65); }
+  .offer-card.featured ul li { color: rgba(245,240,224,0.7); }
+
+  .offer-card ul li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    font-weight: 500;
+  }
+
+  .offer-card:not(.featured) ul li::before { color: var(--green); }
+  .offer-card.featured ul li::before { color: var(--ochre); }
+
+  .offer-note {
+    padding: 1.25rem;
+    border-left: 2px solid var(--pink);
+    font-size: 0.8rem;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+  }
+
+  .offer-card:not(.featured) .offer-note { color: rgba(45,27,78,0.55); }
+  .offer-card.featured .offer-note { color: rgba(245,240,224,0.55); }
+
+  .after-note {
+    background: rgba(45,27,78,0.06);
+    padding: 2.5rem;
+    border-top: 2px solid rgba(45,27,78,0.1);
+  }
+
+  .after-note .after-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(45,27,78,0.35);
+    margin-bottom: 1rem;
+  }
+
+  .after-note p {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: rgba(45,27,78,0.6);
+    max-width: 640px;
+  }
+
+  /* ── CTA ── */
+  .cta-band {
+    background: var(--black);
+    padding: 7rem 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .cta-band h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.8rem;
+    color: var(--parchment);
+    line-height: 1.1;
+    max-width: 600px;
+    white-space: nowrap;
+  }
+
+  .btn-cta {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--parchment);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid #111;
+    padding: 2.5rem 6rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-left {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: rgba(245,240,224,0.9);
+    line-height: 1.4;
+  }
+
+  .footer-left .f-sub {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.48rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,224,0.4);
+    margin-top: 0.4rem;
+  }
+
+  .footer-mark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-mark img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    filter: invert(1) sepia(0.2);
+    opacity: 0.7;
+  }
+
+  .footer-mark .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: rgba(245,240,224,0.35);
+    text-transform: uppercase;
+  }
+
+  .footer-right {
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,224,0.6);
+    text-align: right;
+    line-height: 2;
+  }
+
+  .footer-right a {
+    color: var(--ochre);
+    text-decoration: none;
+  }
+
+  .footer-top-link {
+    display: block;
+    font-size: 0.45rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,224,0.3);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    text-align: right;
+  }
+
+  .footer-top-link:hover { color: var(--ochre); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero, .sec-inner, .contents, .cta-band, footer { padding-left: 2rem; padding-right: 2rem; }
+    .contents { grid-template-columns: 1fr; gap: 1.5rem; }
+    .c-desc { display: none; }
+    .problem-grid, .offer-grid { grid-template-columns: 1fr; }
+    .website-link-card { flex-direction: column; align-items: flex-start; }
+    .thinking-grid, .type-row { grid-template-columns: 1fr; }
+    .mark-display { grid-template-columns: repeat(3, 1fr); }
+    .palette-row { grid-template-columns: repeat(3, 1fr); }
+    .timeline { grid-template-columns: 1fr 1fr; }
+    .cta-band { flex-direction: column; align-items: flex-start; }
+    .contents-list a { grid-template-columns: 2.5rem 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top">
+  <a href="#" class="nav-brand">
+    <img src="IU-Mock%20Logo.svg" alt="Intersectional Uprising">
+    <div class="nav-brand-text">
+      <span class="top">Intersectional</span>
+      <span class="bottom">Uprising</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#situation">The situation</a></li>
+    <li><a href="#thinking">The thinking</a></li>
+    <li><a href="#work">The work</a></li>
+    <li><a href="#rollout">The rollout</a></li>
+    <li><a href="#offer">The offer</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero grain">
+  <div class="hero-bg"><img src="manchester%203.png" alt="Intersectional Uprising march, Manchester"></div>
+  <p class="hero-pre">A proposal for Alix Valentine-Colquhoun / Intersectional Uprising</p>
+  <h1>Your first brand.</h1>
+  <p class="hero-standfirst">IU is a serious movement. Fifteen chapters, 14,000 followers, marches in cities across the country on the same day. It deserves a visual identity that looks like it. This is a proposal for exactly that.</p>
+  <div class="hero-meta">
+    <p>Victoria Denham</p>
+    <p>March 2026</p>
+    <p>Confidential</p>
+  </div>
+</div>
+
+<!-- CONTENTS -->
+<div class="contents">
+  <p class="contents-label">Contents</p>
+  <ul class="contents-list">
+    <li>
+      <a href="#situation">
+        <span class="c-num">01</span>
+        <span class="c-title">The situation</span>
+        <span class="c-desc">What the brand looks like now and why it is holding the movement back</span>
+      </a>
+    </li>
+    <li>
+      <a href="#thinking">
+        <span class="c-num">02</span>
+        <span class="c-title">The thinking</span>
+        <span class="c-desc">Where the direction came from and why</span>
+      </a>
+    </li>
+    <li>
+      <a href="#work">
+        <span class="c-num">03</span>
+        <span class="c-title">The work</span>
+        <span class="c-desc">The mark, the brand system, the website concept and the Instagram grid</span>
+      </a>
+    </li>
+    <li>
+      <a href="#rollout">
+        <span class="c-num">04</span>
+        <span class="c-title">The rollout</span>
+        <span class="c-desc">How the brand reaches every chapter and what that looks like in practice</span>
+      </a>
+    </li>
+    <li>
+      <a href="#offer">
+        <span class="c-num">05</span>
+        <span class="c-title">The offer</span>
+        <span class="c-desc">What this is worth, what I am asking, and what comes next</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- 01 SITUATION -->
+<section id="situation">
+  <div class="sec-inner">
+    <p class="sec-label"><span class="n">01</span> The situation</p>
+    <h2 class="sec-h2">The brand is the bottleneck.</h2>
+    <p class="lead">Right now, every chapter produces content their own way. The feed has no visual thread. The mark is not being used. New chapters have nothing to start from. That is not a content problem. It is a brand infrastructure problem.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card dark">
+        <p class="p-label">The symptom</p>
+        <h3>14 chapters, 14 different visual languages</h3>
+        <p>Scroll the feed and you will see different fonts, different palettes and different tones in every post. Some content is hand-made with whatever app was nearest. Some is partner content posted as-is. None of it adds up to a brand.</p>
+      </div>
+      <div class="problem-card">
+        <p class="p-label">The cause</p>
+        <h3>No system, no templates, no mark anyone uses</h3>
+        <p>The current logo does not translate to graphic use. There is no agreed colour palette, no shared fonts, no templates. Every chapter social lead starts from scratch every time they post.</p>
+      </div>
+      <div class="problem-card">
+        <p class="p-label">The risk</p>
+        <h3>14K followers, diluted by inconsistency</h3>
+        <p>An audience that size is a genuine asset. But if the feed does not read as a coherent movement, that audience does not compound. Partners and press do not take it seriously because it does not look serious.</p>
+      </div>
+      <div class="problem-card dark">
+        <p class="p-label">The opportunity</p>
+        <h3>You do not need a rebrand. You need a first brand.</h3>
+        <p>Nothing changes about what IU is. The energy, the causes, the community stay exactly as they are. What changes is that everything starts looking like it came from the same place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 THINKING -->
+<section id="thinking">
+  <div class="sec-inner">
+    <p class="sec-label"><span class="n">02</span> The thinking</p>
+    <h2 class="sec-h2">Where the direction came from.</h2>
+    <p class="lead">Every decision here has a reason behind it. This is not a style applied to IU from the outside. It is an attempt to find the visual language that already belongs to what IU is.</p>
+
+    <div class="thinking-grid">
+      <div class="thinking-card">
+        <p class="t-eyebrow">The mark</p>
+        <h3>A phoenix, not a logo</h3>
+        <p>IU is a movement about rising. The phoenix is the oldest symbol of that. Not clipart, not a wordmark: a mark that can live on a placard, a jacket, a profile image or a banner. Something with weight. Something that reads at distance.</p>
+      </div>
+      <div class="thinking-card">
+        <p class="t-eyebrow">The palette</p>
+        <h3>Protest colours with history behind them</h3>
+        <p>Violet for suffragette heritage and power. Green for grassroots and growth. Pink for feminist visibility and energy. Ochre for earth, warmth and the printed pamphlet. Near-black and parchment for contrast and legibility.</p>
+      </div>
+      <div class="thinking-card">
+        <p class="t-eyebrow">The texture</p>
+        <h3>Riso print, photocopied flyers, protest literature</h3>
+        <p>The grain running through every section references the visual history of grassroots organising: risograph printing, photocopied zines, hand-run community newsletters. The texture of people making things without a budget.</p>
+      </div>
+      <div class="thinking-card">
+        <p class="t-eyebrow">The type</p>
+        <h3>Three typefaces, three registers</h3>
+        <p>Bebas Neue for the bold graphic moments: headlines, placards, countdowns. Cormorant Garamond italic for the intellectual layer: quotes, principles, statements. DM Sans for the functional layer: navigation, captions, body copy.</p>
+      </div>
+      <div class="thinking-card">
+        <p class="t-eyebrow">The photography</p>
+        <h3>Real marches, real people, consistent treatment</h3>
+        <p>Every photograph uses the same colour grade: partially desaturated, shifted toward the brand palette, with a gradient overlay. Different photographers, different cities, same visual language across every chapter.</p>
+      </div>
+      <div class="thinking-card">
+        <p class="t-eyebrow">The Instagram system</p>
+        <h3>A grid that compounds</h3>
+        <p>Nine tile types covering every post IU needs to make. The individual posts do not need to be perfect. The grid builds meaning as it grows: every new post reinforces the one before it. A feed that reads like a movement.</p>
+      </div>
+    </div>
+
+    <!-- Reference images -->
+    <div class="ref-grid">
+      <div class="ref-img"><img src="_%20(1).jpeg" alt="Protest photography reference"></div>
+      <div class="ref-img"><img src="_%20(4).jpeg" alt="Feminists documentary poster"></div>
+      <div class="ref-img"><img src="Edith%20Garrud,%20the%20jiu-jitsu%20suffragette,%20illustrated%20by%20Petra%20Eriksson%20%23art.jpeg" alt="Edith Garrud suffragette illustration"></div>
+      <div class="ref-img"><img src="_%20(2).jpeg" alt="Women Unite march reference"></div>
+    </div>
+
+    <p style="font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,240,224,0.6);margin-bottom:1.5rem;margin-top:2rem;">The palette</p>
+    <div class="palette-row">
+      <div class="swatch" style="background:var(--violet);">
+        <span class="sw-name" style="color:rgba(245,240,224,0.6);">Violet</span>
+        <span class="sw-hex" style="color:rgba(245,240,224,0.6);">#2D1B4E</span>
+      </div>
+      <div class="swatch" style="background:var(--green);">
+        <span class="sw-name" style="color:rgba(245,240,224,0.6);">Forest</span>
+        <span class="sw-hex" style="color:rgba(245,240,224,0.6);">#1A3D2B</span>
+      </div>
+      <div class="swatch" style="background:var(--pink);">
+        <span class="sw-name" style="color:rgba(245,240,224,0.85);">Pink</span>
+        <span class="sw-hex" style="color:rgba(245,240,224,0.75);">#E8175D</span>
+      </div>
+      <div class="swatch" style="background:var(--ochre);">
+        <span class="sw-name" style="color:rgba(9,9,8,0.65);">Ochre</span>
+        <span class="sw-hex" style="color:rgba(9,9,8,0.65);">#C9A84C</span>
+      </div>
+      <div class="swatch" style="background:var(--parchment);">
+        <span class="sw-name" style="color:rgba(45,27,78,0.55);">Parchment</span>
+        <span class="sw-hex" style="color:rgba(45,27,78,0.6);">#F5F0E0</span>
+      </div>
+      <div class="swatch" style="background:var(--black);border:1px solid #1a1a1a;">
+        <span class="sw-name" style="color:rgba(245,240,224,0.6);">Near black</span>
+        <span class="sw-hex" style="color:rgba(245,240,224,0.6);">#090908</span>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-card">
+        <p class="type-label">Display / graphic</p>
+        <div class="type-specimen" style="font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--parchment);letter-spacing:0.04em;">Bebas Neue</div>
+        <p>Headlines, placards, countdowns, CTAs. The graphic weight of the brand.</p>
+      </div>
+      <div class="type-card">
+        <p class="type-label">Editorial / italic</p>
+        <div class="type-specimen" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.2rem;color:var(--parchment);">Cormorant Garamond</div>
+        <p>Quotes, principles, statements. Intellectual weight and contrast to the bold type.</p>
+      </div>
+      <div class="type-card">
+        <p class="type-label">Functional / body</p>
+        <div class="type-specimen" style="font-family:'DM Sans',sans-serif;font-size:1.6rem;color:var(--parchment);font-weight:300;">DM Sans</div>
+        <p>Navigation, captions, body copy. Clean and readable at every size.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 THE WORK -->
+<section id="work" class="grain">
+  <div class="sec-inner">
+    <p class="sec-label"><span class="n">03</span> The work</p>
+    <h2 class="sec-h2">What I have built.</h2>
+    <p class="lead">Everything here is a working deliverable, not a mockup. The website is functional HTML. The brand guide is ready to print. The Instagram system is ready to hand to chapter leads the day the package is built.</p>
+
+    <!-- Mark -->
+    <div class="work-block">
+      <p class="work-block-label">The mark</p>
+      <h3>The Phoenix</h3>
+      <p>A purpose-built phoenix mark for IU. Works at any scale, on any background. Four directions were explored before arriving at the final mark.</p>
+
+      <p style="font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ochre);margin-bottom:1rem;margin-top:2rem;">What IU had</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:2.5rem;">
+        <div class="mark-concept">
+          <img src="IU_OG_LOGO.webp" alt="Intersectional Uprising existing logo" style="width:70%;height:70%;object-fit:contain;opacity:1;">
+          <span class="concept-label">Existing mark</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ochre);margin-bottom:1rem;">What I worked up</p>
+      <div class="mark-concepts">
+        <div class="mark-concept">
+          <img src="images/flat-vector-logo-mark--art-deco-style--feminine--a.svg" alt="Recraft variant A">
+          <span class="concept-label">Variant A</span>
+        </div>
+        <div class="mark-concept">
+          <img src="images/flat-vector-logo-mark--art-deco-style--feminine--a%20(1).svg" alt="Recraft variant B">
+          <span class="concept-label">Variant B</span>
+        </div>
+        <div class="mark-concept">
+          <img src="images/flat-vector-logo-mark--art-deco-style--feminine--a%20(3).svg" alt="Recraft variant D">
+          <span class="concept-label">Variant D</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ochre);margin-bottom:1.5rem;margin-top:2.5rem;">The chosen mark</p>
+      <div class="mark-display">
+        <div class="mark-bg" style="background:var(--ochre);">
+          <img src="IU-Mock%20Logo.svg" alt="IU mark on ochre">
+        </div>
+        <div class="mark-bg" style="background:var(--black);">
+          <img src="IU-Mock%20Logo.svg" alt="IU mark on black" style="filter:invert(1);opacity:0.9;">
+        </div>
+        <div class="mark-bg" style="background:var(--green);">
+          <img src="IU-Mock%20Logo.svg" alt="IU mark on green" style="filter:invert(1);opacity:0.9;">
+        </div>
+        <div class="mark-bg" style="background:var(--parchment);">
+          <img src="IU-Mock%20Logo.svg" alt="IU mark on parchment">
+        </div>
+        <div class="mark-bg" style="background:var(--pink);">
+          <img src="IU-Mock%20Logo.svg" alt="IU mark on pink" style="filter:invert(1);opacity:0.9;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Instagram inline -->
+    <div class="work-block">
+      <p class="work-block-label">Instagram grid system</p>
+      <h3>The Grid</h3>
+      <p>Nine tile types. Every post IU needs to make, templated and ready. Chapters swap in their photo and text. Everything else is locked.</p>
+      <div class="ig-with-notes">
+      <div class="ig-phone-wrap" style="justify-content:flex-start;">
+        <div class="ig-phone">
+          <div class="ig-screen">
+
+            <!-- Profile header -->
+            <div style="background:#121212;padding:0.75rem 0.75rem 0.5rem;">
+              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;">
+                <div style="width:46px;height:46px;border-radius:50%;background:var(--violet);border:2px solid var(--pink);padding:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                  <img src="IU-Mock%20Logo.svg" alt="" style="width:100%;height:100%;object-fit:contain;filter:invert(1);opacity:0.9;position:relative;inset:auto;">
+                </div>
+                <div style="display:flex;gap:1rem;flex:1;justify-content:center;">
+                  <div style="text-align:center;"><span style="display:block;font-size:0.72rem;font-weight:600;color:#fff;">573</span><span style="display:block;font-size:0.65rem;color:#888;">posts</span></div>
+                  <div style="text-align:center;"><span style="display:block;font-size:0.72rem;font-weight:600;color:#fff;">14K</span><span style="display:block;font-size:0.65rem;color:#888;">followers</span></div>
+                  <div style="text-align:center;"><span style="display:block;font-size:0.72rem;font-weight:600;color:#fff;">383</span><span style="display:block;font-size:0.65rem;color:#888;">following</span></div>
+                </div>
+              </div>
+              <div style="padding:0 0.25rem 0.4rem;">
+                <div style="font-size:0.72rem;font-weight:600;color:#fff;margin-bottom:0.1rem;">intersectionaluprising</div>
+                <div style="font-size:0.65rem;color:#aaa;line-height:1.4;">If it's not intersectional, it's not feminism.<br>14 chapters. One movement.</div>
+              </div>
+              <div style="display:flex;gap:0.3rem;margin-bottom:0.6rem;">
+                <div style="flex:1;background:#262626;border-radius:5px;padding:0.3rem;text-align:center;font-size:0.65rem;font-weight:600;color:#fff;">Following</div>
+                <div style="flex:1;background:#262626;border-radius:5px;padding:0.3rem;text-align:center;font-size:0.65rem;font-weight:600;color:#fff;">Message</div>
+              </div>
+            </div>
+
+            <!-- Highlights -->
+            <div style="background:#121212;padding:0.5rem 0.75rem 0.6rem;display:flex;gap:0.75rem;border-bottom:1px solid #1f1f1f;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:0.2rem;flex-shrink:0;">
+                <div style="width:38px;height:38px;border-radius:50%;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font-size:0.9rem;">✊</div>
+                <span style="font-size:0.65rem;color:#888;">Marches</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:0.2rem;flex-shrink:0;">
+                <div style="width:38px;height:38px;border-radius:50%;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font-size:0.9rem;">📍</div>
+                <span style="font-size:0.65rem;color:#888;">Chapters</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:0.2rem;flex-shrink:0;">
+                <div style="width:38px;height:38px;border-radius:50%;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font-size:0.9rem;">📢</div>
+                <span style="font-size:0.65rem;color:#888;">Campaign</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:0.2rem;flex-shrink:0;">
+                <div style="width:38px;height:38px;border-radius:50%;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font-size:0.9rem;">💜</div>
+                <span style="font-size:0.65rem;color:#888;">About Us</span>
+              </div>
+            </div>
+
+            <div class="ig-grid">
+              <div class="ig-tile t1">
+                <img src="IU-Mock%20Logo.svg" alt="" class="mark">
+                <div class="headline">Women's rights are human rights</div>
+                <div class="sub">Intersectional Uprising</div>
+              </div>
+              <div class="ig-tile t2">
+                <img src="manchester%203.png" alt="Manchester march">
+                <div class="city-label">Manchester</div>
+              </div>
+              <div class="ig-tile t3">
+                <div class="quote">"If it's not intersectional, it's not feminism."</div>
+                <div class="attr">— Our founding principle</div>
+              </div>
+              <div class="ig-tile t4">
+                <div class="days-label">Days to go</div>
+                <div class="days">28</div>
+                <div class="event">UK Women's<br>March 2026</div>
+              </div>
+              <div class="ig-tile t5">
+                <img src="Brighton%209.webp" alt="Brighton march">
+                <div class="city-label">Brighton</div>
+              </div>
+              <div class="ig-tile t6">
+                <div class="chapter-tag">Chapter spotlight</div>
+                <div class="chapter-name">Derby</div>
+                <div class="chapter-sub">One of our most active chapters</div>
+              </div>
+              <div class="ig-tile t7">
+                <div class="stat-num">14</div>
+                <div class="stat-label">Cities marching<br>on the same day</div>
+              </div>
+              <div class="ig-tile t8">
+                <img src="Liverpool%204.webp" alt="Liverpool march">
+                <div class="city-label">Liverpool</div>
+              </div>
+              <div class="ig-tile t9">
+                <div class="cta-top">Find your chapter</div>
+                <div class="cta-main">Join the uprising</div>
+                <div class="cta-url">intersectionaluprising.co.uk</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="ig-notes-list">
+        <div class="ig-note-item">
+          <div class="ig-note-num">1</div>
+          <div><div class="ig-note-title">Campaign statement <span class="ig-note-badge badge-static">Static</span></div><div class="ig-note-desc">Mark and bold headline on violet. Used for solidarity posts and campaign launches. Change the headline only.</div></div>
+        </div>
+        <div class="ig-note-item">
+          <div class="ig-note-num">2</div>
+          <div><div class="ig-note-title">Chapter photo <span class="ig-note-badge badge-static">Static</span></div><div class="ig-note-desc">Real march photo with consistent colour grade and city label. Drag in the photo — filter and overlay are locked.</div></div>
+        </div>
+        <div class="ig-note-item">
+          <div class="ig-note-num">3</div>
+          <div><div class="ig-note-title">Quote / principle <span class="ig-note-badge badge-static">Static</span></div><div class="ig-note-desc">Cormorant italic on parchment. For founding principles, powerful quotes, a single line that needs space.</div></div>
+        </div>
+        <div class="ig-note-item">
+          <div class="ig-note-num">4</div>
+          <div><div class="ig-note-title">Event countdown <span class="ig-note-badge badge-static">Static</span></div><div class="ig-note-desc">Pink background, large number. Post weekly in the lead-up to a march. Change the number each time.</div></div>
+        </div>
+        <div class="ig-note-item">
+          <div class="ig-note-num">5</div>
+          <div><div class="ig-note-title">Chapter photo <span class="ig-note-badge badge-static">Static</span></div><div class="ig-note-desc">Second photo tile. Same template as tile 2, different city.</div></div>
+        </div>
+        <div class="ig-note-item">
+          <div class="ig-note-num">6</div>
+          <div><div class="ig-note-title">Chapter spotlight <span class="ig-note-badge badge-carousel">Carousel cover</span></div><div class="ig-note-desc">Cover slide of a carousel about one chapter. Swipe slides are photos from that chapter. Change city name only.</div></div>
+        </div>
+        <div class="ig-note-item">
+          <div class="ig-note-num">7</div>
+          <div><div class="ig-note-title">Statistic <span class="ig-note-badge badge-static">Static</span></div><div class="ig-note-desc">Near-black, large pink number. For impact data: cities, marchers, signatures. Use sparingly.</div></div>
+        </div>
+        <div class="ig-note-item">
+          <div class="ig-note-num">8</div>
+          <div><div class="ig-note-title">Chapter photo <span class="ig-note-badge badge-static">Static</span></div><div class="ig-note-desc">Third photo tile. Same template, different city.</div></div>
+        </div>
+        <div class="ig-note-item" style="border-bottom:none;">
+          <div class="ig-note-num">9</div>
+          <div><div class="ig-note-title">Call to action <span class="ig-note-badge badge-pinned">Pinned</span></div><div class="ig-note-desc">Ochre. This tile never changes. Pinned to the profile. Always the same: find your chapter, join the uprising.</div></div>
+        </div>
+      </div>
+      </div><!-- end ig-with-notes -->
+
+    <!-- Website link -->
+    <div class="work-block" style="margin-top:5rem;">
+      <p class="work-block-label">Website concept</p>
+      <h3>The Website</h3>
+      <p>A full working website built to the brand. Interactive chapter map, real march photography, mobile responsive. Open it in a new tab to explore the full thing.</p>
+      <a href="index.html" class="website-link-card" target="_blank">
+        <div class="wl-left">
+          <p class="wl-label">Working HTML mockup</p>
+          <h3>intersectionaluprising.co.uk</h3>
+          <p>Hero, about, interactive chapter map, march gallery, support, team and contact. All sections built. All copy placeholders clearly marked for Alix to fill.</p>
+        </div>
+        <span class="wl-cta">Open website</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ROLLOUT -->
+<section id="rollout" class="grain">
+  <div class="sec-inner">
+    <p class="sec-label"><span class="n">04</span> The rollout</p>
+    <h2 class="sec-h2">One folder. Shared once.<br>Used everywhere.</h2>
+    <p class="lead">The whole system is designed so you only have to do one thing: share a link. Everything after that runs itself.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>I build and zip the package</h3>
+          <p>All assets: mark files, Canva templates, the one-page guide and the AI prompt are compiled into a single downloadable folder. Everything is named clearly. Nothing requires a designer to open it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>You share it with chapter leads</h3>
+          <p>One email, one link, one zip. Each chapter social lead downloads the folder. The link works for every new chapter that joins after that too. Or share templates via a Canva team folder so everything updates from one place.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>Chapter leads open it in Canva</h3>
+          <p>Upload the templates to a Canva account. All nine Instagram templates are there. Open one, drag in the photo, type the text, export. No design decisions to make. The system makes them.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <h3>Use the AI prompt for copy</h3>
+          <p>Paste the brand prompt into Claude or ChatGPT. Ask it to write a caption, a story script or a press release. It knows the brand voice, the values and the tone. It writes like IU, not like a generic charity.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div>
+          <h3>The feed becomes coherent</h3>
+          <p>Every chapter posts in the same visual language. Different cities, different content, different photos. But the same mark, the same palette, the same type. For the first time, scrolling IU's feed feels like one movement.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item active">
+        <p class="tl-when">Week 1 / Stage 1</p>
+        <h3>Confirm</h3>
+        <p>One hour together to review what I have built, confirm the direction and agree exactly what goes into the package.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-when">Week 2 / Stage 2</p>
+        <h3>Make it perfect</h3>
+        <p>Canva templates built to spec. One-page guide designed. AI prompt written and tested. Mark files exported in all formats. Everything zipped and labelled.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-when">Week 3 / Stage 3</p>
+        <h3>Handover</h3>
+        <p>Package delivered. One-hour walkthrough call covering templates, chapter distribution and the AI prompt. Any final tweaks made.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-when">Ongoing / Stage 4</p>
+        <h3>Chapter rollout</h3>
+        <p>You distribute to chapter leads. I can provide a short video walkthrough for chapters that need it. Available for questions for two weeks after handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 THE OFFER -->
+<section id="offer">
+  <div class="sec-inner">
+    <p class="sec-label"><span class="n">05</span> The offer</p>
+    <h2 class="sec-h2">What this is worth.<br>What I am asking.</h2>
+    <p class="lead">I want to be straightforward with you about two things: what this cost to produce, and what I want in return.</p>
+
+    <div class="ai-note">
+      <p>Most of the production work here was done with AI tools. <strong>I want you to know that.</strong> The strategy, the design direction and all the judgment calls are mine. The AI executed to my brief. I am telling you this because it is how I work and because it is relevant to the price. If I had built this entirely by hand it would cost three times as much and take twice as long. The tools exist now to give a grassroots feminist collective a genuinely professional brand identity at a cost that makes sense. That feels like exactly the right use of them.</p>
+    </div>
+
+    <div class="offer-grid">
+      <div class="offer-card featured">
+        <p class="offer-tag">What this would cost</p>
+        <h3>The going rate</h3>
+        <div class="offer-price">£1,200</div>
+        <p class="offer-price-note">Fixed fee. This is what a brand system like this is worth.</p>
+        <ul>
+          <li>Phoenix mark in all file formats</li>
+          <li>9 Instagram Canva templates</li>
+          <li>Poster and placard templates</li>
+          <li>Email and newsletter header</li>
+          <li>One-page brand guide (PDF)</li>
+          <li>AI brand voice prompt</li>
+          <li>One-hour handover call</li>
+          <li>Two weeks of support after handover</li>
+          <li>Website concept as working HTML</li>
+        </ul>
+        <div class="offer-note">I am quoting this so you know what you are getting. This is a professional package and £1,200 is a fair price for it. I want that to be visible.</div>
+      </div>
+
+      <div class="offer-card">
+        <p class="offer-tag">What I am asking from you</p>
+        <h3>Nothing</h3>
+        <div class="offer-price">£0</div>
+        <p class="offer-price-note">You are my first rollout. That matters to me.</p>
+        <ul>
+          <li>Honest feedback at each stage</li>
+          <li>A testimonial if you are happy with the result</li>
+          <li>Permission to use the work as a case study</li>
+        </ul>
+        <div class="offer-note">I am building this as a service. You are helping me test whether it works in practice. That is a fair exchange. If at any point it does not feel fair to you, tell me.</div>
+      </div>
+    </div>
+
+    <div class="after-note">
+      <p class="after-label">After this point</p>
+      <p>Everything in this proposal is free. Once the package is delivered and you are happy with it, anything else you want: campaign management, additional templates, social content strategy or an ongoing retainer, those are paid engagements. We agree scope and price before anything starts. Nothing is assumed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band grain">
+  <h2>If this looks right to you, let's talk.</h2>
+  <a href="mailto:torsdenham@gmail.com" class="btn-cta">Get in touch</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      Victoria Denham
+      <span class="f-sub">torsdenham@gmail.com &nbsp;·&nbsp; <a href="https://victoria-denham.tiiny.site/" target="_blank" style="color:var(--ochre);text-decoration:none;">victoria-denham.tiiny.site</a></span>
+      <span class="f-sub" style="margin-top:0.1rem;">Want to see more of my work? Have a look.</span>
+    </div>
+    <div class="footer-mark">
+      <img src="IU-Mock%20Logo.svg" alt="Intersectional Uprising">
+      <div class="footer-name">Intersectional Uprising</div>
+    </div>
+    <div class="footer-right">
+      <p>Prepared for IU &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; Confidential</p>
+      <p>&copy; Victoria Denham 2026</p>
+      <a href="#" class="footer-top-link">↑ Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+</script>
+
+</body>
+</html>
